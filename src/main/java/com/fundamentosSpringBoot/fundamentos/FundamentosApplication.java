@@ -3,6 +3,8 @@ package com.fundamentosSpringBoot.fundamentos;
 import com.fundamentosSpringBoot.fundamentos.Pojo.Pojo;
 import com.fundamentosSpringBoot.fundamentos.bean.*;
 import com.fundamentosSpringBoot.fundamentos.component.ComponentDependency;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +14,8 @@ import java.sql.SQLOutput;
 
 @SpringBootApplication
 public class FundamentosApplication implements CommandLineRunner {
+
+	Log LOGGER = LogFactory.getLog(FundamentosApplication.class);
 	private ComponentDependency componentDependency;
 	private MyBean myBean;
 	private MyBeanWithDependency myBeanWithDependency;
@@ -47,5 +51,6 @@ public class FundamentosApplication implements CommandLineRunner {
 		carreraF1Interface.mostrarNombreCircuito("Spa Francorchamps", "Belgica");
 		System.out.println(myBeanProperties.function());
 		System.out.println(pojo.getAge()+"_"+pojo.getEmail()+"-"+pojo.getPassword());
+		LOGGER.error("Esto es un error");
 	}
 }
